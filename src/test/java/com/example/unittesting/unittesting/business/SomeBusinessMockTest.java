@@ -4,22 +4,24 @@ import com.example.unittesting.unittesting.data.SomeDateService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SomeBusinessMockTest {
 
+    @InjectMocks
     private SomeBusinessImpl business;
-    private SomeDateService dataServiceMock;
 
-    @Before
-    public void initTesting(){
-        business = new SomeBusinessImpl();
-        dataServiceMock = mock(SomeDateService.class);
-        business.setSomdeDateService(dataServiceMock);
-    }
+    @Mock
+    private SomeDateService dataServiceMock;
 
 
     @Test
