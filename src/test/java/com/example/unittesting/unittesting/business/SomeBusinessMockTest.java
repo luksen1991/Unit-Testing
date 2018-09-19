@@ -18,26 +18,21 @@ public class SomeBusinessMockTest {
     public void initTesting(){
         business = new SomeBusinessImpl();
         dataServiceMock = mock(SomeDateService.class);
+        business.setSomdeDateService(dataServiceMock);
     }
 
 
     @Test
     public void calculateSumSomeDataService_simple() {
         when(dataServiceMock.retriveAllData()).thenReturn(new int[]{1,2,3});
-        business.setSomdeDateService(dataServiceMock);
-        int result = business.calculateSumUsingDataService();
-        int expectedResult = 6;
-        assertEquals(expectedResult,result);
+        assertEquals(6,business.calculateSumUsingDataService());
 
     }
 
     @Test
     public void calculateSum_empty() {
         when(dataServiceMock.retriveAllData()).thenReturn(new int[]{});
-        business.setSomdeDateService(dataServiceMock);
-        int result = business.calculateSumUsingDataService();
-        int expectedResult = 0;
-        assertEquals(expectedResult,result);
+        assertEquals(0,business.calculateSumUsingDataService());
 
     }
 
@@ -45,10 +40,7 @@ public class SomeBusinessMockTest {
     public void calculateSum_NegativeNumbers() {
 
         when(dataServiceMock.retriveAllData()).thenReturn(new int[]{-1,-2,-3});
-        business.setSomdeDateService(dataServiceMock);
-        int result = business.calculateSumUsingDataService();
-        int expectedResult = -6;
-        assertEquals(expectedResult,result);
+        assertEquals(-6,business.calculateSumUsingDataService());
 
     }
 
@@ -56,10 +48,7 @@ public class SomeBusinessMockTest {
     public void calculateSum_OneValue() {
 
        when(dataServiceMock.retriveAllData()).thenReturn(new int[]{5});
-        business.setSomdeDateService(dataServiceMock);
-        int result = business.calculateSumUsingDataService();
-        int expectedResult = 5;
-        assertEquals(expectedResult,result);
+        assertEquals(5,business.calculateSumUsingDataService(),business.calculateSumUsingDataService());
 
     }
 }
