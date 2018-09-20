@@ -1,7 +1,10 @@
 package com.example.unittesting.unittesting.controller;
 
+import com.example.unittesting.unittesting.model.Item;
+import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -16,27 +19,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = HelloWorldController.class)
-public class HelloWorldControllerTest {
+@WebMvcTest(value = ItemController.class)
+public class ItemControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Test
-    public void helloWorld_basic() throws Exception {
+    public void dummyItem() throws Exception {
 
-        //call /hello   /GET application/JSON
         RequestBuilder request = MockMvcRequestBuilders
-                .get("/api/hello")
+                .get("/item/dummy-item")
                 .accept(MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("HelloWorld"))
+                .andExpect(content().json(
+                        "{\"id\":1,\"name\":\"Ball\",\"price\":10,\"quantity\":100}"))
                 .andReturn();
 
+//        JSONAssert.assertEquals(result,result.getResponse().getContentAsString(),true);
 
-        //verify "Hello World"
-        assertEquals("HelloWorld",result.getResponse().getContentAsString());
     }
 }
