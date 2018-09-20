@@ -13,6 +13,7 @@ public class ItemBusinesService {
 
     @Autowired
     ItemRepositoryImpl itemRepository;
+
     public Item retrieveHardcodedItem() {
         Item item = new Item();
         item.setId(1);

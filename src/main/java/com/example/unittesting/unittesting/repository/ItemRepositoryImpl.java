@@ -4,12 +4,13 @@ import com.example.unittesting.unittesting.Utils.HibernateUtil;
 import com.example.unittesting.unittesting.model.Item;
 import org.hibernate.type.descriptor.sql.JdbcTypeFamilyInformation;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Component
+@Repository
 @Transactional
 public class ItemRepositoryImpl{
 

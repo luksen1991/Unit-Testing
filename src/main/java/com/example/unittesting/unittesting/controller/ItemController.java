@@ -15,7 +15,7 @@ public class ItemController {
     ItemBusinesService itemBusinesService;
 
     @Autowired
-    public ItemController(ItemBusinesService itemBusinesService, ItemRepositoryImpl itemRepository) {
+    public ItemController(ItemBusinesService itemBusinesService) {
         this.itemBusinesService = itemBusinesService;
     }
 

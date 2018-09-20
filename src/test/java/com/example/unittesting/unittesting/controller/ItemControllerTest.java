@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -33,39 +35,24 @@ public class ItemControllerTest {
     private ItemBusinesService itemBusinesService;
 
     @Test
-    public void dummyItem() throws Exception {
+    public void retriveAllItems() throws Exception {
 
+        when(itemBusinesService.retrievAllItems()).thenReturn(
+                Arrays.asList(new Item("Pilka",100,200),new Item("Pilka2",200,300))
+        );
         RequestBuilder request = MockMvcRequestBuilders
-                .get("/item/dummy-item")
+                .get("/item/allItems")
                 .accept(MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().json(
 
-                                "{\"id\":0,\"name\":\"Pilka\",\"price\":100,\"quantity\":100,\"value\":0}"))
+                                "[{id:0, name:Pilka, price:100, quantity:200},{id:0, name:Pilka2, price:200, quantity:300}]"))
                 .andReturn();
 
 //        JSONAssert.assertEquals(result,result.getResponse().getContentAsString(),true);
 
     }
 
-//    @Test
-//    public void itemFromBusinesService() throws Exception {
-//
-//
-//        when(itemBusinesService.retrieveHardcodedItem()).thenReturn();
-//        RequestBuilder request = MockMvcRequestBuilders
-//                .get("/item/item-from-busines-service")
-//                .accept(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request)
-//                .andExpect(status().isOk())
-//                .andExpect(content().json(
-//                        "{id:2, name:Item2, price:20, quantity:20}"))
-//                .andReturn();
-//
-////        JSONAssert.assertEquals(result,result.getResponse().getContentAsString(),true);
-//
-//    }
 }
