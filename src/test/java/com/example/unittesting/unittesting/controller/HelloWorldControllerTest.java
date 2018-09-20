@@ -23,7 +23,7 @@ public class HelloWorldControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void helloWorld_basic() throws Exception {
+    public void helloWorldBasic() throws Exception {
 
         //call /hello   /GET application/JSON
         RequestBuilder request = MockMvcRequestBuilders

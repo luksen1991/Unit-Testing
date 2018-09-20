@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class SomeBusinessImplTest {
 
     @Test
-    public void calculateSum_simple() {
+    public void calculateSumSimple() {
 
         SomeBusinessImpl business = new SomeBusinessImpl();
         int result = business.calculateSum(new int[]{1,2,3});
@@ -17,7 +17,7 @@ public class SomeBusinessImplTest {
     }
 
     @Test
-    public void calculateSum_empty() {
+    public void calculateSumEmpty() {
 
         SomeBusinessImpl business = new SomeBusinessImpl();
         int result = business.calculateSum(new int[]{});
@@ -27,7 +27,7 @@ public class SomeBusinessImplTest {
     }
 
     @Test
-    public void calculateSum_NegativeNumbers() {
+    public void calculateSumNegativeNumbers() {
 
         SomeBusinessImpl business = new SomeBusinessImpl();
         int result = business.calculateSum(new int[]{-1,1,-2,2});
@@ -37,7 +37,7 @@ public class SomeBusinessImplTest {
     }
 
     @Test
-    public void calculateSum_OneValue() {
+    public void calculateSumOneValue() {
 
         SomeBusinessImpl business = new SomeBusinessImpl();
         int result = business.calculateSum(new int[]{3});

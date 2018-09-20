@@ -25,21 +25,21 @@ public class SomeBusinessMockTest {
 
 
     @Test
-    public void calculateSumSomeDataService_simple() {
+    public void calculateSumSomeDataServiceSimple() {
         when(dataServiceMock.retriveAllData()).thenReturn(new int[]{1,2,3});
         assertEquals(6,business.calculateSumUsingDataService());
 
     }
 
     @Test
-    public void calculateSum_empty() {
+    public void calculateSumEmpty() {
         when(dataServiceMock.retriveAllData()).thenReturn(new int[]{});
         assertEquals(0,business.calculateSumUsingDataService());
 
     }
 
     @Test
-    public void calculateSum_NegativeNumbers() {
+    public void calculateSumNegativeNumbers() {
 
         when(dataServiceMock.retriveAllData()).thenReturn(new int[]{-1,-2,-3});
         assertEquals(-6,business.calculateSumUsingDataService());
@@ -47,7 +47,7 @@ public class SomeBusinessMockTest {
     }
 
     @Test
-    public void calculateSum_OneValue() {
+    public void calculateSumOneValue() {
 
        when(dataServiceMock.retriveAllData()).thenReturn(new int[]{5});
         assertEquals(5,business.calculateSumUsingDataService(),business.calculateSumUsingDataService());

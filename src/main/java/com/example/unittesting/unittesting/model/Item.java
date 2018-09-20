@@ -1,17 +1,34 @@
 package com.example.unittesting.unittesting.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="item")
 public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID")
     private int id;
+
+    @Column(name="Name")
     private String name;
+
+    @Column(name="Price")
     private int price;
+
+    @Column(name="Quantity")
     private int quantity;
 
+    @Transient
+    private int value;
 
-    public Item(int id, String name, int price , int quantity) {
-        this.id = id;
-        this.name=name;
-        this.price = price;
-        this.quantity = quantity;
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public int getId() {
@@ -46,8 +63,8 @@ public class Item {
         this.quantity = quantity;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Item[%d, %s, %d, %d]  ",id,name,price,quantity);
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("Item[%d, %s, %d, %d]  ",id,name,price,quantity);
+//    }
 }
