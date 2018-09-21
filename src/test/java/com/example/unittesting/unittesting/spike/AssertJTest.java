@@ -25,6 +25,6 @@ public class AssertJTest {
                 .isNotEmpty();
 
         assertThat("").isEmpty();
-        
+
     }
 }
